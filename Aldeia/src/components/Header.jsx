@@ -1,15 +1,15 @@
-import kaze from "./../assets/kaze.svg"
-import { Nav, Navbar, Container, Dropdown } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import "../styles/Header.css"
+import kaze from "./../assets/kaze.svg";
+import { Nav, Navbar, Container, Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../styles/Header.css";
 
-function Header () {
+function Header() {
   return (
     <header>
-      <Navbar expand="lg" bg="black" variant="dark" className="nav-bar">
+      <Navbar expand="lg" bg="black"  className="nav-bar">
         <Container className="cabecalho">
           <Navbar.Brand as={Link} to="/">
-            <img src={kaze} alt="Logo" width={240} className="logo"/>
+            <img src={kaze} alt="Logo" className="logo" />
           </Navbar.Brand>
 
           <Navbar.Collapse id="basic-navbar-nav" className="navigate-links">
@@ -25,7 +25,7 @@ function Header () {
         </Container>
       </Navbar>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
