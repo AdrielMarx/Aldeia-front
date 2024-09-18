@@ -6,13 +6,15 @@ import "../styles/Header.css";
 function Header() {
   return (
     <header>
-      <Navbar expand="lg" bg="black"  className="nav-bar">
+      <Navbar expand="lg" >
         <Container className="cabecalho">
-          <Navbar.Brand as={Link} to="/">
+          <div>
+            <Navbar.Brand as={Link} to="/">
             <img src={kaze} alt="Logo" className="logo" />
           </Navbar.Brand>
-
-          <Navbar.Collapse id="basic-navbar-nav" className="navigate-links">
+          </div>
+          <div>
+            <Navbar.Collapse className="navigate-links">
             <Nav className="navigate-links">
               <Nav.Link as={Link} to="/ninjas" className="nav-link">
                 Ninjas
@@ -22,6 +24,7 @@ function Header() {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          </div>
         </Container>
       </Navbar>
     </header>
