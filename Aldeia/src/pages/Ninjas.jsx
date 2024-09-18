@@ -3,6 +3,7 @@ import { getNinjas, deleteNinja } from "../api/ninjas"
 import toast from "react-hot-toast"
 import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import "../styles/Ninjas.css"
 
 function Ninjas () {
   const [ninjas, setNinjas] = useState(null)
