@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import Ninjas from "./pages/Ninjas";
 import Missoes from "./pages/Missoes";
 import Footer from "./components/Footer";
+import NovoNinja from "./pages/NovoNinja";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="*" element={<NotFound />}/>
           <Route path="/ninjas" element={<Ninjas />}/>
           <Route path="/missoes" element={<Missoes />}/>
+          <Route path="/ninjas/novo" element={<NovoNinja />}/>
         </Routes>
         <Footer />
       </BrowserRouter>
