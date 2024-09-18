@@ -8,7 +8,7 @@ export async function getNinjas() {
   return response.data
 }
 
-export async function addNinjas(data) {
+export async function addNinja(data) {
   const response = await axios.post("http://localhost:3000/ninjas", data)
 
   return response.data
