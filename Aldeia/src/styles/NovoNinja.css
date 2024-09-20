@@ -1,0 +1,23 @@
+.formNinja {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 480px;
+  gap: 8px;
+}
+
+.novoNinja {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.botaoNinja {
+  display: flex;
+  justify-content: center;
+}
+
+.botao {
+  width: 240px;
+  margin: 16px;
+}
