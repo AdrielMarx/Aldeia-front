@@ -43,7 +43,6 @@ function Ninjas () {
             <th>Nome</th>
             <th>Rank</th>
             <th>Aldeia</th>
-            <th>Idade</th>
             <th>Elemento</th>
           </tr>
         </thead>
@@ -55,7 +54,6 @@ function Ninjas () {
                 <td>{ninja.nome}</td>
                 <td>{ninja.rank}</td>
                 <td>{ninja.aldeia}</td>
-                <td>{ninja.idade}</td>
                 <td>{ninja.elemento}</td>
                 <td>
                   <Button variant='danger' size='sm' onClick={() => deletarNinja(ninja.id)}>
