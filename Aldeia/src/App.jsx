@@ -6,6 +6,7 @@ import Ninjas from "./pages/Ninjas";
 import Missoes from "./pages/Missoes";
 import Footer from "./components/Footer";
 import NovoNinja from "./pages/NovoNinja";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      <Toaster position="bottom-right"/>
     </>
   )
 }

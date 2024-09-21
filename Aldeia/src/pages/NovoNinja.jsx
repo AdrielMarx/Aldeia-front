@@ -15,17 +15,19 @@ function NovoNinja() {
   const navigate = useNavigate();
 
   function salvarNinja(data) {
+    if (!data.imgURL) {
+      data.imgURL = "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA1L2pvYjk2My1iLTAxNl8zLWxodHk4Mmg2LmpwZw.jpg"
+    }
 
-    if (data.imgURL === "") data.imgURL = null
+    console.log(data)
 
     addNinja(data)
       .then((res) => {
-        console.log("certo")
         toast.success(res.message);
         navigate("/ninjas");
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        console.log(err)
       });
   }
   return (

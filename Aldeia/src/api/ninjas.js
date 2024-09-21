@@ -28,7 +28,7 @@ export async function getNinja(id) {
 }
 
 export async function updateNinja(id, data) {
-  const response = await axios.put(`http:localhost:3000/ninjas/${id}`, data)
+  const response = await axios.put(`http://localhost:3000/ninjas/${id}`, data)
 
   return response.data
 }
