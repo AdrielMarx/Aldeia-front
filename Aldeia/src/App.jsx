@@ -7,6 +7,7 @@ import Missoes from "./pages/Missoes";
 import Footer from "./components/Footer";
 import NovoNinja from "./pages/NovoNinja";
 import { Toaster } from "react-hot-toast";
+import EditarNinja from "./pages/EditarNinja";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/ninjas" element={<Ninjas />}/>
           <Route path="/missoes" element={<Missoes />}/>
           <Route path="/ninjas/novo" element={<NovoNinja />}/>
+          <Route path="/ninja/editar/:id" element={<EditarNinja />}/>
         </Routes>
         <Footer />
       </BrowserRouter>

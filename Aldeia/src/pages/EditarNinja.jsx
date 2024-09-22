@@ -1,42 +1,49 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { addNinja } from "../api/ninjas";
-import toast from "react-hot-toast";
-import "../styles/NovoNinja.css";
-import { Button } from "react-bootstrap";
+import { useForm } from "react-hook-form"
+import { useNavigate, useParams } from "react-router-dom"
+import { getNinja, updateNinja } from "../api/ninjas"
+import { useEffect } from "react"
+import toast from "react-hot-toast"
+import { Button } from "react-bootstrap"
+import "../styles/NovoNinja.css"
 
-function NovoNinja() {
+function EditarNinja () {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset,
+  } = useForm()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  function salvarNinja(data) {
-    if (!data.imgURL) {
-      data.imgURL = "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA1L2pvYjk2My1iLTAxNl8zLWxodHk4Mmg2LmpwZw.jpg"
-    }
+  const { id } = useParams()
 
-    console.log(data)
-
-    addNinja(data)
-      .then((res) => {
-        toast.success(res.message);
-        navigate("/ninjas");
-      })
-      .catch((err) => {
-        console.log(err)
-      });
+  function atualizarNinja (data) {
+    updateNinja(id, data).then((res) => {
+      toast.success(res.message)
+      navigate("/ninjas")
+    })
   }
+
+  function carregarNinja() {
+    getNinja(id).then((data) => {
+      reset(data)
+    }).catch((err) => {
+      navigate("/ninjas")
+    })
+  }
+
+  useEffect(() => {
+    carregarNinja()
+  }, [])
+
   return (
-    <main>
-      <h1>Novo ninja</h1>
+    <main >
+      <h1>Editar ninja</h1>
       <hr />
       <div className="crudNinja">
-        <form onSubmit={handleSubmit(salvarNinja)} className="formNinja">
-        <div>
+        <form onSubmit={handleSubmit(atualizarNinja)} className="formNinja">
+      <div>
           <label htmlFor="nome">Nome</label>
           <input
             type="text"
@@ -127,13 +134,14 @@ function NovoNinja() {
           )}
         </div>
         <div className="botaoNinja">
-          <Button variant="dark" type="submit" className="botao">Cadastrar</Button>
+          <Button variant="dark" type="submit" className="botao">Editar Ninja</Button>
         </div>
-        
       </form>
       </div>
+      
+      
     </main>
-  );
+  )
 }
 
-export default NovoNinja;
+export default EditarNinja
