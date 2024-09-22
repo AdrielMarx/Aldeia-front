@@ -115,11 +115,15 @@ function NovoNinja() {
         </div>
         <div>
           <label htmlFor="imgURL">Foto (opcional)</label>
-          <input type="text"
+          <input type="url"
           id="imgURL"
           className="form-control"
-          placeholder="URL da imagem do ninja (max 500 caracteres)."
-          {...register("imgURL", { required: false, maxLength: 500 })} />
+          placeholder="URL da imagem do ninja (max 1000 caracteres)."
+          {...register("imgURL", { required: false, maxLength: 1000 })} 
+          />
+          {errors.imgURL && (
+            <small className="text-danger" >URL inválida</small>
+          )}
         </div>
         <div className="botaoNinja">
           <Button variant="dark" type="submit" className="botao">Cadastrar</Button>
