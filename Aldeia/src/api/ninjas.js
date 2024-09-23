@@ -20,7 +20,6 @@ export async function deleteNinja(id) {
   return response.data
 } 
 
-
 export async function getNinja(id) {
   const response = await axios.get(`http://localhost:3000/ninjas/${id}`)
 
