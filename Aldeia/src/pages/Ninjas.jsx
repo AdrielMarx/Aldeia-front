@@ -40,6 +40,7 @@ function Ninjas () {
         <thead>
           <tr>
             <th></th>
+            <th>ID</th>
             <th>Nome</th>
             <th>Rank</th>
             <th>Aldeia</th>
@@ -51,6 +52,7 @@ function Ninjas () {
             return (
               <tr key={ninja.id} >
                   <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
+                <td>{ninja.id}</td>
                 <td>{ninja.nome}</td>
                 <td>{ninja.rank}</td>
                 <td>{ninja.aldeia}</td>
@@ -59,6 +61,7 @@ function Ninjas () {
                   <Button variant='danger' size='sm' onClick={() => deletarNinja(ninja.id)}>
                     Excluir
                   </Button>
+                  <Button size='sm' as={Link} to={`/ninja/editar/${ninja.id}`}>Editar</Button>
                 </td>
               </tr>
             )
