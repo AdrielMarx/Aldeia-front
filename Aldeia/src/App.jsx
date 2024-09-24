@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import NovoNinja from "./pages/NovoNinja";
 import { Toaster } from "react-hot-toast";
 import EditarNinja from "./pages/EditarNinja";
+import NovaMissao from "./pages/NovaMissao";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="*" element={<NotFound />}/>
           <Route path="/ninjas" element={<Ninjas />}/>
           <Route path="/missoes" element={<Missoes />}/>
+          <Route path="/missoes/novo" element={<NovaMissao />}/>
           <Route path="/ninjas/novo" element={<NovoNinja />}/>
           <Route path="/ninja/editar/:id" element={<EditarNinja />}/>
         </Routes>

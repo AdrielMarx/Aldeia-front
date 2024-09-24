@@ -43,9 +43,9 @@ function Missoes () {
           <tr>
             <th>Título</th>
             <th>Nível</th>
-            <th>Data limíte para execução</th>
+            <th>Data limite para execução</th>
             <th>Descrição</th>
-            <th>Ninja responsáel</th>
+            <th>ID do ninja responsável</th>
           </tr>
         </thead>
         <tbody>
@@ -56,6 +56,7 @@ function Missoes () {
                 <td>{missao.nivel}</td>
                 <td>{missao.dataExecucao}</td>
                 <td>{missao.desc}</td>
+                <td>{missao.ninjaId}</td>
                 <td>
                   <Button variant='danger' size='sm' onClick={() => deletarMissao(missao.id)}>
                     Excluir
