@@ -10,9 +10,9 @@ function NovoNinja() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   function salvarNinja(data) {
     if (!data.imgURL) {
@@ -28,7 +28,7 @@ function NovoNinja() {
       })
       .catch((err) => {
         console.log(err)
-      });
+      })
   }
   return (
     <main>
@@ -42,6 +42,7 @@ function NovoNinja() {
             type="text"
             id="nome"
             className="form-control"
+            placeholder="Nome do ninja"
             {...register("nome", { required: true, maxLength: 200 })}
           />
           {errors.nome && (
@@ -59,12 +60,12 @@ function NovoNinja() {
             <option value="" selected disabled>
               Selelcione o Rank
             </option>
-            <option value="genin">Genin</option>
-            <option value="chunnin">Chunnin</option>
-            <option value="pJonnin">Primeiro Jonnin</option>
-            <option value="sJonnin">Segundo Jonnin</option>
-            <option value="anbu">ANBU</option>
-            <option value="sannin">Sannin</option>
+            <option value="Genin">Genin</option>
+            <option value="Chunnin">Chunnin</option>
+            <option value="Primeiro Jonnin">Primeiro Jonnin</option>
+            <option value="Segundo Jonnin">Segundo Jonnin</option>
+            <option value="ANBU">ANBU</option>
+            <option value="Sannin">Sannin</option>
           </select>
           {errors.rank && (
               <small className="text-danger">O rank é obrigatório</small>
@@ -81,11 +82,11 @@ function NovoNinja() {
             <option value="" selected disabled>
               Selecione a aldeia
             </option>
-            <option value="folha">Aldeia da folha</option>
-            <option value="areia">Aldeia da areia</option>
-            <option value="rocha">Aldeia da rocha</option>
-            <option value="nevoa">Aldeia da nevoa</option>
-            <option value="chuva">Aldeia da chuva</option>
+            <option value="Aldeia da folha">Aldeia da folha</option>
+            <option value="Aldeia da areia">Aldeia da areia</option>
+            <option value="Aldeia da rocha">Aldeia da rocha</option>
+            <option value="Aldeia da névoa">Aldeia da névoa</option>
+            <option value="Aldeia da chuva">Aldeia da chuva</option>
             <option value="outra">Outra</option>
           </select>
           {errors.aldeia && (
@@ -103,11 +104,11 @@ function NovoNinja() {
             <option value="" selected disabled>
               Elemento de maior domínio
             </option>
-            <option value="vento">Vento</option>
-            <option value="fogo">Fogo</option>
-            <option value="terra">Terra</option>
-            <option value="agua">Água</option>
-            <option value="relampago">Relâmpago</option>
+            <option value="Vento">Vento</option>
+            <option value="Fogo">Fogo</option>
+            <option value="Terra">Terra</option>
+            <option value="Água">Água</option>
+            <option value="Relampago">Relâmpago</option>
             <option value="outro">Outro</option>
           </select>
           {errors.elemento && (
@@ -133,7 +134,7 @@ function NovoNinja() {
       </form>
       </div>
     </main>
-  );
+  )
 }
 
-export default NovoNinja;
+export default NovoNinja
