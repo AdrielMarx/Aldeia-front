@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { addMissao } from "../api/missoes"
+import { getNinjas } from "../api/ninjas"
 import toast from "react-hot-toast"
 import "../styles/Ninjas.css"
+import { useEffect, useState } from "react"
+import { Button } from "react-bootstrap"
 
 function NovaMissao () {
 
@@ -23,6 +26,8 @@ function NovaMissao () {
   const dataFormatada = `${ano}-${mes}-${dia}`
 
   function salvarMissao (data) {
+    console.log(data.titulo)
+    
     if (!data.dataExecucao) {
       data.dataExecucao = "-"
     }
@@ -36,6 +41,19 @@ function NovaMissao () {
       console.log(err)
     })
   }
+
+  const [ninjas, setNinjas] = useState([])
+
+  function carregarNinjas () {
+    getNinjas().then((dados) => {
+      setNinjas(dados)
+    })
+  }
+
+  useEffect(() => {
+    carregarNinjas()
+  }, [])
+
   return (
     <main>
       <h1>Nova missão</h1>
@@ -46,9 +64,10 @@ function NovaMissao () {
           <label htmlFor="titulo">Título</label>
           <input type="text"
           id="titulo"
+          name="titulo"
           className="form-control"
-          {...register("nome", { required: true, maxLength:200 })} />
-          {errors.nome && (
+          {...register("titulo", { required: true, maxLength:200 })} />
+          {errors.titulo && (
             <small className="text-danger">Título inválido</small>
           )}
         </div>
@@ -90,9 +109,31 @@ function NovaMissao () {
             placeholder="Descreva a missão (Max 1000 caracteres)"
             className="form-control"
             {...register("desc", { required: true, maxLength: 1000 })} />
+            {errors.desc && (
+              <small className="text-danger">Descrição inválida</small>
+            )}
         </div>
         <div>
-          
+          <label htmlFor="ninjaId">Qual ninja conduzirá?</label>
+          <select name="ninjaId"
+          id="ninjaId"
+          className="form-select"
+          {...register("ninjaId", { required: true, valueAsNumber: true })}>
+            <option value="" selected disabled >Selectione um ninja</option>
+            {ninjas.map((ninja) => {
+              return (
+                <option key={ninja.id} value={ninja.id}>
+                  {ninja.nome} - {ninja.rank}
+                </option>
+              )
+            })}
+          </select>
+          {errors.ninjaId && (
+            <small className="text-danger">Ninja inválido</small>
+          )}
+        </div>
+        <div className="botaoNinja">
+          <Button variant="dark" type="submit" className="botao">Criar missão</Button>
         </div>
       </form>
     </div>

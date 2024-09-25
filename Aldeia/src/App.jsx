@@ -9,6 +9,7 @@ import NovoNinja from "./pages/NovoNinja";
 import { Toaster } from "react-hot-toast";
 import EditarNinja from "./pages/EditarNinja";
 import NovaMissao from "./pages/NovaMissao";
+import EditarMissao from "./pages/EditarMissao";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/ninjas" element={<Ninjas />}/>
           <Route path="/missoes" element={<Missoes />}/>
           <Route path="/missoes/novo" element={<NovaMissao />}/>
+          <Route path="/missoes/editar/:id" element={<EditarMissao />}/>
           <Route path="/ninjas/novo" element={<NovoNinja />}/>
           <Route path="/ninja/editar/:id" element={<EditarNinja />}/>
         </Routes>

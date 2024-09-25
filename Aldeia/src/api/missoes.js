@@ -27,7 +27,7 @@ export async function updateMissao(id, data) {
 }
 
 export async function addMissao(data) {
-  const response = await axios.post("http://localhost:3000/missoees", data)
+  const response = await axios.post("http://localhost:3000/missoes", data)
 
   return response.data
 }

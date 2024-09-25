@@ -1,0 +1,25 @@
+.description.collapsed {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.botaoVermais {
+  background-color: #191A19;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.botaoVermais:hover {
+  background-color: #4E9F3D;
+}
+
+.descricao {
+  position: static !important;
+  flex-wrap: wrap;
+  width: 500px;
+}
