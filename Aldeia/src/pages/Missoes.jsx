@@ -12,16 +12,16 @@ function DescricaoVermais({ descricao }) {
     setIsExpanded(!isExpanded);
   };
 
-  const truncateDescription = (descricao) => {
-    const charLimit = 100;
-    return isExpanded || descricao.length <= charLimit
+  const descricaoQuebrada = (descricao) => {
+    const limite = 100;
+    return isExpanded || descricao.length <= limite
       ? descricao
-      : descricao.substring(0, charLimit) + "...";
+      : descricao.substring(0, limite) + "...";
   };
 
   return (
     <div>
-      <p>{truncateDescription(descricao)}</p>
+      <p className="descricaoTexto">{descricaoQuebrada(descricao)}</p>
       {descricao.length > 100 && (
         <button className="botaoVermais"  onClick={toggleExpand}>
           {isExpanded ? "Ver menos" : "Ver mais"}
