@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form"
+import "../styles/Login.css"
 
 function Login () {
 
@@ -7,43 +8,49 @@ function Login () {
     handleSubmit,
     formState: { errors },
   } = useForm()
+  
   return (
-    <main>
+    <main className="login-page">
+      <aside className="cardInfo">
+        <h2>Torne-se um Kage</h2>
+      </aside>
       <section>
-        <h2>Torne-se</h2>
-      </section>
-      <section>
-        <div>
-          <form className="form-section" >
+        <div className="form-login">
+          <h2>Login</h2>
+          <section className="loginRedes">
+              <button className="botaoRedes">github</button>
+              <button className="botaoRedes">google</button>
+          </section>
+          <form className="form-section">
             <div>
-              <label htmlFor="userName">Seu nome:</label>
               <input type="text"
               id="userName"
               name="userName"
+              placeholder="Nome"
               className="form-control"
               {...register("userName", { required: "Nome obrigatório" })} />
             </div>
             <div>
-              <label htmlFor="email">Seu email:</label>
               <input type="email"
               id="email"
               name="email"
+              placeholder="Email"
               className="form-control"
               {...register("email", { required: "Email obrigatório"})} />
             </div>
             <div>
-              <label htmlFor="emailConfirm">Confirme seu email:</label>
               <input type="email"
               name="emailConfirm"
               id="emailConfirm"
+              placeholder="Confirme o Email"
               className="form-control"
               {...register("emailConfirm", { required: "Confirmação de email obrigatória" })} />
             </div>
             <div>
-              <label htmlFor="userSenha">Crie uma senha:</label>
               <input type="password"
               name="userSenha" 
               id="userSenha"
+              placeholder="Senha"
               className="form-control"
               {...register("userSenha", {required: "Senha obrigatória" })} />
             </div>
