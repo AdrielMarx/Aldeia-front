@@ -1,5 +1,8 @@
 import { useForm } from "react-hook-form"
 import "../styles/Login.css"
+import { useNavigate } from "react-router-dom"
+import { loginUser } from "../firebase/auth"
+import toast from "react-hot-toast"
 
 function Login () {
 
@@ -8,6 +11,19 @@ function Login () {
     handleSubmit,
     formState: { errors },
   } = useForm()
+
+  const navigate = useNavigate()
+
+  const messageEmail = "Confirmação de email obrigatória"
+
+  function entrar (data) {
+    if (data.email =! data.emailConfirm) {
+      messageEmail = "Emails não coincidem"
+    }
+    loginUser(data.email, data.senha).then(() => {
+      toast.success("Bem vindo(a)!")
+    })
+  }
   
   return (
     <main className="login-page">
@@ -38,13 +54,14 @@ function Login () {
               className="form-control"
               {...register("email", { required: "Email obrigatório"})} />
             </div>
+            
             <div>
               <input type="email"
               name="emailConfirm"
               id="emailConfirm"
               placeholder="Confirme o Email"
               className="form-control"
-              {...register("emailConfirm", { required: "Confirmação de email obrigatória" })} />
+              {...register("emailConfirm", { required: messageEmail })} />
             </div>
             <div>
               <input type="password"
@@ -53,6 +70,9 @@ function Login () {
               placeholder="Senha"
               className="form-control"
               {...register("userSenha", {required: "Senha obrigatória" })} />
+            </div>
+            <div id="botaoEntrar">
+              <button className="botaoRedes" onClick={handleSubmit(entrar)}> Entrar </button>
             </div>
             
           </form>
