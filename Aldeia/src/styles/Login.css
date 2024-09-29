@@ -42,3 +42,7 @@
   box-shadow: 0 0 10px 0 #191A19 inset, 0 0 10px #1E5128;
   color: #1E5128;
 }
+
+#botaoEntrar {
+  width: 100%;
+}
