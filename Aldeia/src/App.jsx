@@ -11,26 +11,47 @@ import EditarNinja from "./pages/EditarNinja";
 import NovaMissao from "./pages/NovaMissao";
 import EditarMissao from "./pages/EditarMissao";
 import Login from "./pages/Login";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/config";
+import { UserContext } from "./context/UserContext";
 
 function App() {
+
+  const [userLoged, setUserLoged] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUserLoged(user)
+      setLoading(false)
+    })
+  }, [])
+
+  if (loading) {
+    return null
+  }
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<NotFound />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/ninjas" element={<Ninjas />}/>
-          <Route path="/missoes" element={<Missoes />}/>
-          <Route path="/missoes/novo" element={<NovaMissao />}/>
-          <Route path="/missoes/editar/:id" element={<EditarMissao />}/>
-          <Route path="/ninjas/novo" element={<NovoNinja />}/>
-          <Route path="/ninja/editar/:id" element={<EditarNinja />}/>
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-      <Toaster position="bottom-right"/>
+      <UserContext.Provider value={userLoged}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />}/>
+            <Route path="/login" element={<Login />}/>
+            <Route path="/ninjas" element={<Ninjas />}/>
+            <Route path="/missoes" element={<Missoes />}/>
+            <Route path="/missoes/novo" element={<NovaMissao />}/>
+            <Route path="/missoes/editar/:id" element={<EditarMissao />}/>
+            <Route path="/ninjas/novo" element={<NovoNinja />}/>
+            <Route path="/ninja/editar/:id" element={<EditarNinja />}/>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+        <Toaster position="bottom-right"/>
+      </UserContext.Provider>
+      
     </>
   )
 }
