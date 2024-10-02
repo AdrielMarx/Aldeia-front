@@ -21,6 +21,9 @@ function Ninjas () {
     }
     
   }
+  useEffect(() => {
+    carregarNinjas()
+  }, [])
 
   function deletarNinja(id) {
     const del = confirm("TEm CERTEZA ABSOLUTA??????????????????????????")
@@ -33,9 +36,7 @@ function Ninjas () {
     }
   }
 
-  useEffect(() => {
-    carregarNinjas()
-  }, [])
+  
 
   return (
     <main className="mt-4 container">

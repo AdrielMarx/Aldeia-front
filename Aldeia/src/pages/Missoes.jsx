@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { deleteMissao, getMissoes } from "../api/missoes";
+import { getNinja } from "../api/ninjas";
 import toast from "react-hot-toast";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../styles/Missoes.css"
+import "../styles/Missoes.css";
 import { getAuth } from "firebase/auth";
 
 function DescricaoVermais({ descricao }) {
@@ -24,7 +25,7 @@ function DescricaoVermais({ descricao }) {
     <div>
       <p className="descricaoTexto">{descricaoQuebrada(descricao)}</p>
       {descricao.length > 100 && (
-        <button className="botaoVermais"  onClick={toggleExpand}>
+        <button className="botaoVermais" onClick={toggleExpand}>
           {isExpanded ? "Ver menos" : "Ver mais"}
         </button>
       )}
@@ -33,17 +34,28 @@ function DescricaoVermais({ descricao }) {
 }
 
 function Missoes() {
-  const [missoes, setMissoes] = useState(null);
+  const [missoes, setMissoes] = useState([]);
+  const [ninjaNome, setNinjaNome] = useState({});
 
   function carregarMissoes() {
-    const auth = getAuth()
-    const user = auth.currentUser
+    const auth = getAuth();
+    const user = auth.currentUser;
 
     if (user) {
-      const uid = user.uid
-      getMissoes(uid).then((data) => {
+      const uid = user.uid;
+      getMissoes(uid).then(async (data) => {
         setMissoes(data);
-    });
+        
+        const novosNinjaNome = {};
+        for (const missao of data) {
+          const ninjaId = missao.ninjaId;
+          if (ninjaId) {
+            const ninja = await getNinja(ninjaId);
+            novosNinjaNome[ninjaId] = ninja.nome;
+          }
+        }
+        setNinjaNome(novosNinjaNome);
+      });
     }
   }
 
@@ -69,7 +81,7 @@ function Missoes() {
         Adicionar missão
       </Button>
       <hr />
-      {missoes ? (
+      {missoes.length > 0 ? (
         <Table>
           <thead>
             <tr>
@@ -77,7 +89,7 @@ function Missoes() {
               <th>Nível</th>
               <th>Data limite para execução</th>
               <th>Descrição</th>
-              <th>ID do ninja responsável</th>
+              <th>Ninja responsável</th>
             </tr>
           </thead>
           <tbody>
@@ -89,7 +101,7 @@ function Missoes() {
                 <td className="descricao">
                   <DescricaoVermais descricao={missao.desc} />
                 </td>
-                <td>{missao.ninjaId}</td>
+                <td>{ninjaNome[missao.ninjaId]}</td>
                 <td>
                   <Button
                     variant="danger"
