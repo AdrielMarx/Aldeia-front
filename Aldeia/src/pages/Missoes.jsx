@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/Missoes.css"
+import { getAuth } from "firebase/auth";
 
 function DescricaoVermais({ descricao }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -35,9 +36,15 @@ function Missoes() {
   const [missoes, setMissoes] = useState(null);
 
   function carregarMissoes() {
-    getMissoes().then((data) => {
-      setMissoes(data);
+    const auth = getAuth()
+    const user = auth.currentUser
+
+    if (user) {
+      const uid = user.uid
+      getMissoes(uid).then((data) => {
+        setMissoes(data);
     });
+    }
   }
 
   function deletarMissao(id) {

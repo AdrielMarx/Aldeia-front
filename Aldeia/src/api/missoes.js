@@ -2,8 +2,10 @@
 
 import axios from "axios";
 
-export async function getMissoes() {
-  const response = await axios.get("http://localhost:3000/missoes")
+export async function getMissoes(userId) {
+  const response = await axios.get(`http://localhost:3000/missoes`, {
+    params: { userId }
+  })
 
   return response.data
 }
@@ -26,8 +28,11 @@ export async function updateMissao(id, data) {
   return response.data
 }
 
-export async function addMissao(data) {
-  const response = await axios.post("http://localhost:3000/missoes", data)
+export async function addMissao(data, userId) {
+  const response = await axios.post("http://localhost:3000/missoes", {
+    ...data, 
+    userId: userId
+  })
 
   return response.data
 }

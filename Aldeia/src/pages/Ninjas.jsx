@@ -4,14 +4,22 @@ import toast from "react-hot-toast"
 import { Button, Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import "../styles/Ninjas.css"
+import { getAuth } from "firebase/auth"
 
 function Ninjas () {
   const [ninjas, setNinjas] = useState(null)
 
   function carregarNinjas() {
-    getNinjas().then((data) => {
+    const auth = getAuth()
+    const user = auth.currentUser
+
+    if (user) {
+      const uid = user.uid
+      getNinjas(uid).then((data) => {
       setNinjas(data)
     })
+    }
+    
   }
 
   function deletarNinja(id) {

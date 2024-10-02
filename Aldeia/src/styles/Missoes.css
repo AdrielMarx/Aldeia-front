@@ -21,7 +21,7 @@
 .descricao {
   position: static !important;
   flex-wrap: wrap;
-  width: 500px;
+  max-width: 500px;
 }
 
 .descricaoTexto {
