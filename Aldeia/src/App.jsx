@@ -10,11 +10,12 @@ import { Toaster } from "react-hot-toast";
 import EditarNinja from "./pages/EditarNinja";
 import NovaMissao from "./pages/NovaMissao";
 import EditarMissao from "./pages/EditarMissao";
-import Login from "./pages/Login";
+import Login from "./pages/Cadastro";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { UserContext } from "./context/UserContext";
+import Cadastro from "./pages/Cadastro";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />}/>
             <Route path="/login" element={<Login />}/>
+            <Route path="/cadastro" element={<Cadastro />}/>
             <Route path="/ninjas" element={<Ninjas />}/>
             <Route path="/missoes" element={<Missoes />}/>
             <Route path="/missoes/novo" element={<NovaMissao />}/>
