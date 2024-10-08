@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "../styles/Login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cadastrarUsuario, entrarGoogle } from "../firebase/auth";
 import toast from "react-hot-toast";
+import { Nav } from "react-bootstrap";
 
 function Cadastro() {
   const {
@@ -120,9 +121,10 @@ function Cadastro() {
                 <small className="text-danger">Senha inválida</small>
               )}
             </div>
-
-            <div id="botaoEntrar">
-              <button className="botaoRedes" type="submit">
+            <small><Link as={Link} to="/login" className="navLogin" ><p>Já possui uma conta? Entre</p></Link></small>
+ 
+            <div className="w-80">
+              <button className="botaoRedes" id="botaoEntrar" type="submit">
                 Cadastrar
               </button>
             </div>
