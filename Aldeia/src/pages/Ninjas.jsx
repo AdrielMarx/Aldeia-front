@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { getNinjas, deleteNinja } from "../api/ninjas"
 import toast from "react-hot-toast"
 import { Button, Table } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 import "../styles/Ninjas.css"
 import { getAuth } from "firebase/auth"
+import { UserContext } from "../context/UserContext"
 
 function Ninjas () {
   const [ninjas, setNinjas] = useState(null)
+
+  const user = useContext(UserContext)
 
   function carregarNinjas() {
     const auth = getAuth()
@@ -21,9 +24,15 @@ function Ninjas () {
     }
     
   }
+
   useEffect(() => {
     carregarNinjas()
   }, [])
+
+  if (user === null) {
+    toast.error("Login necessário para acessar página")
+    return <Navigate to="/login"/>
+  }
 
   function deletarNinja(id) {
     const del = confirm("TEm CERTEZA ABSOLUTA??????????????????????????")

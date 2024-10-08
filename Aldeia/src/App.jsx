@@ -10,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 import EditarNinja from "./pages/EditarNinja";
 import NovaMissao from "./pages/NovaMissao";
 import EditarMissao from "./pages/EditarMissao";
-import Login from "./pages/Cadastro";
+import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";

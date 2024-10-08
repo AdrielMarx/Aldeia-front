@@ -10,8 +10,9 @@
   border: none;
   padding: 4px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: 0.2s;
+  font-size: 12px;
 }
 
 .botaoVermais:hover {

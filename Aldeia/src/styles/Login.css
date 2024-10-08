@@ -46,3 +46,14 @@
 #botaoEntrar {
   width: 100%;
 }
+
+.navLogin {
+  color: #1E5128 !important;
+}
+
+.acessarConta {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: auto;
+}

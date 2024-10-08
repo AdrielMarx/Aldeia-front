@@ -1,25 +1,26 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { deleteMissao, getMissoes } from "../api/missoes";
 import { getNinja } from "../api/ninjas";
 import toast from "react-hot-toast";
 import { Button, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Missoes.css";
 import { getAuth } from "firebase/auth";
+import { UserContext } from "../context/UserContext";
 
 function DescricaoVermais({ descricao }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
+    setIsExpanded(!isExpanded)
+  }
 
   const descricaoQuebrada = (descricao) => {
     const limite = 100;
     return isExpanded || descricao.length <= limite
       ? descricao
-      : descricao.substring(0, limite) + "...";
-  };
+      : descricao.substring(0, limite) + "..."
+  }
 
   return (
     <div>
@@ -30,49 +31,57 @@ function DescricaoVermais({ descricao }) {
         </button>
       )}
     </div>
-  );
+  )
 }
 
 function Missoes() {
-  const [missoes, setMissoes] = useState([]);
-  const [ninjaNome, setNinjaNome] = useState({});
+
+  const user = useContext(UserContext)
+  const navigate = useNavigate
+
+  const [missoes, setMissoes] = useState([])
+  const [ninjaNome, setNinjaNome] = useState({})
 
   function carregarMissoes() {
-    const auth = getAuth();
-    const user = auth.currentUser;
+    const auth = getAuth()
+    const user = auth.currentUser
 
     if (user) {
       const uid = user.uid;
       getMissoes(uid).then(async (data) => {
-        setMissoes(data);
-        
-        const novosNinjaNome = {};
+        setMissoes(data)
+
+        const novosNinjaNome = {}
         for (const missao of data) {
-          const ninjaId = missao.ninjaId;
+          const ninjaId = missao.ninjaId
           if (ninjaId) {
-            const ninja = await getNinja(ninjaId);
-            novosNinjaNome[ninjaId] = ninja.nome;
+            const ninja = await getNinja(ninjaId)
+            novosNinjaNome[ninjaId] = ninja.nome
           }
         }
-        setNinjaNome(novosNinjaNome);
-      });
+        setNinjaNome(novosNinjaNome)
+      })
     }
   }
 
   function deletarMissao(id) {
-    const del = confirm("TEM CERTEZA EIN??");
+    const del = confirm("TEM CERTEZA EIN??")
 
     if (del) {
       deleteMissao(id).then((resposta) => {
-        toast.success(resposta.message);
-        carregarMissoes();
+        toast.success(resposta.message)
+        carregarMissoes()
       });
     }
   }
 
   useEffect(() => {
-    carregarMissoes();
-  }, []);
+    carregarMissoes()
+  }, [])
+
+  if (user === null) {
+    return navigate("/login")
+  }
 
   return (
     <main className="mt-4 container">
@@ -97,7 +106,11 @@ function Missoes() {
               <tr key={missao.id}>
                 <td>{missao.titulo}</td>
                 <td>{missao.nivel}</td>
-                <td>{missao.dataExecucao}</td>
+                <td>
+                  {new Date(
+                    missao.dataExecucao + "T00:00:00"
+                  ).toLocaleDateString()}
+                </td>
                 <td className="descricao">
                   <DescricaoVermais descricao={missao.desc} />
                 </td>
@@ -110,7 +123,11 @@ function Missoes() {
                   >
                     Excluir
                   </Button>
-                  <Button size="sm" as={Link} to={`/missoes/editar/${missao.id}`}>
+                  <Button
+                    size="sm"
+                    as={Link}
+                    to={`/missoes/editar/${missao.id}`}
+                  >
                     Editar
                   </Button>
                 </td>
@@ -122,7 +139,7 @@ function Missoes() {
         <p>carregando...</p>
       )}
     </main>
-  );
+  )
 }
 
-export default Missoes;
+export default Missoes
