@@ -5,3 +5,23 @@
   margin: 0;
   font-family: Roboto, Helvetica, sans-serif;
 }
+
+footer {
+  margin-top: 144px;
+  width: 100%;
+  padding-top: 32px;
+}
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}

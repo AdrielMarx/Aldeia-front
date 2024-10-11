@@ -7,3 +7,9 @@
 .informacaoNinja {
   height: 100px;
 }
+
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

@@ -49,7 +49,7 @@ function Ninjas () {
 
   return (
     <main className="mt-4 container">
-      <h1>ninjas</h1>
+      <h1>Seus ninjas</h1>
       <Button as={Link} to="/ninjas/novo">
         Adicionar ninja
       </Button>
@@ -58,7 +58,6 @@ function Ninjas () {
         <thead>
           <tr>
             <th></th>
-            <th>ID</th>
             <th>Nome</th>
             <th>Rank</th>
             <th>Aldeia</th>
@@ -70,12 +69,11 @@ function Ninjas () {
             return (
               <tr key={ninja.id} >
                   <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
-                <td>{ninja.id}</td>
                 <td>{ninja.nome}</td>
                 <td>{ninja.rank}</td>
                 <td>{ninja.aldeia}</td>
                 <td>{ninja.elemento}</td>
-                <td>
+                <td className="botoes">
                   <Button variant='danger' size='sm' onClick={() => deletarNinja(ninja.id)}>
                     Excluir
                   </Button>

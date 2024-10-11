@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { getNinja, updateNinja } from "../api/ninjas";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { Button } from "react-bootstrap";
 import { getAuth } from "firebase/auth"; 
 import "../styles/NovoNinja.css";
+import { UserContext } from "../context/UserContext";
 
 function EditarNinja() {
   const {
@@ -61,6 +62,13 @@ function EditarNinja() {
   useEffect(() => {
     carregarNinja()
   }, [])
+
+  const user = useContext(UserContext)
+
+  if (user === null) {
+    toast.error("Login necessário para acessar página")
+    return <Navigate to="/login"/>
+  }
 
   return (
     <main>

@@ -3,7 +3,7 @@ import { deleteMissao, getMissoes } from "../api/missoes";
 import { getNinja } from "../api/ninjas";
 import toast from "react-hot-toast";
 import { Button, Table } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import "../styles/Missoes.css";
 import { getAuth } from "firebase/auth";
 import { UserContext } from "../context/UserContext";
@@ -80,17 +80,18 @@ function Missoes() {
   }, [])
 
   if (user === null) {
-    return navigate("/login")
+    toast.error("Login necessário para acessar página")
+    return <Navigate to="/login"/>
   }
 
   return (
     <main className="mt-4 container">
-      <h1>Missões</h1>
+      <h1>Suas Missões</h1>
       <Button as={Link} to="/missoes/novo">
         Adicionar missão
       </Button>
       <hr />
-      {missoes.length > 0 ? (
+      {missoes? (
         <Table>
           <thead>
             <tr>
@@ -115,7 +116,7 @@ function Missoes() {
                   <DescricaoVermais descricao={missao.desc} />
                 </td>
                 <td>{ninjaNome[missao.ninjaId]}</td>
-                <td>
+                <td className="botoes">
                   <Button
                     variant="danger"
                     size="sm"

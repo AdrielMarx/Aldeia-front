@@ -1,12 +1,13 @@
 import { get, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { addMissao } from "../api/missoes";
 import { getNinjas } from "../api/ninjas";
 import toast from "react-hot-toast";
 import "../styles/Ninjas.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { getAuth } from "firebase/auth";
+import { UserContext } from "../context/UserContext";
 
 function NovaMissao() {
   const auth = getAuth();
@@ -64,6 +65,14 @@ function NovaMissao() {
     }
     
   }
+
+  const user = useContext(UserContext)
+
+  if (user === null) {
+    toast.error("Login necessário para acessar página")
+    return <Navigate to="/login"/>
+  }
+
 
   useEffect(() => {
     carregarNinjas();

@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { getMissao, updateMissao } from "../api/missoes";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { getAuth } from "firebase/auth";
+import { UserContext } from "../context/UserContext";
+
 
 function EditarMissao() {
   const {
@@ -41,6 +43,13 @@ function EditarMissao() {
       toast.error("Você precisa estar logado para acessar essa página.");
       navigate("/login")
     }
+  }
+
+  const user = useContext(UserContext) 
+
+  if (user === null) {
+    toast.error("Login necessário para acessar página")
+    return <Navigate to="/login"/>
   }
 
   function atualizarMissao(data) {
