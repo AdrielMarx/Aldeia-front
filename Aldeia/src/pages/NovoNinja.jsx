@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { addNinja } from "../api/ninjas";
 import toast from "react-hot-toast";
 import "../styles/NovoNinja.css";
 import { Button } from "react-bootstrap";
 import { getAuth } from "firebase/auth";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 function NovoNinja() {
   const auth = getAuth();
@@ -39,6 +41,13 @@ function NovoNinja() {
           console.log(err);
         });
     }
+  }
+
+  const user = useContext(UserContext)
+
+  if (user === null) {
+    toast.error("Login necessário para acessar página")
+    return <Navigate to="/login"/>
   }
 
   return (
@@ -119,7 +128,7 @@ function NovoNinja() {
               <option value="Fogo">Fogo</option>
               <option value="Terra">Terra</option>
               <option value="Água">Água</option>
-              <option value="Relampago">Relâmpago</option>
+              <option value="Relâmpago">Relâmpago</option>
               <option value="outro">Outro</option>
             </select>
             {errors.elemento && (

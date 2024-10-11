@@ -29,6 +29,11 @@ function Header() {
           </div>
           <div>
             <Navbar.Collapse className="navigate-links">
+              <Nav>
+                <Nav.Link as={Link} to="/" className="nav-link">
+                  Home
+                </Nav.Link>
+              </Nav>
               {user && (
                 <Nav className="navigate-links">
                   <Nav.Link as={Link} to="/ninjas" className="nav-link">
@@ -38,7 +43,16 @@ function Header() {
                     Missões
                   </Nav.Link>
                   <p className="nav-link m-0">Olá, {user.displayName}!</p>
-                  <button onClick={handleLogout} className="nav-link">Sair</button>
+                  <button onClick={handleLogout} className="nav-link">
+                    Sair
+                  </button>
+                </Nav>
+              )}
+              {!user && (
+                <Nav>
+                  <Nav.Link as={Link} to="/login" className="nav-link">
+                    Entrar
+                  </Nav.Link>
                 </Nav>
               )}
             </Navbar.Collapse>

@@ -1,0 +1,19 @@
+footer {
+  background-color: #191A19 !important;
+  position: relative !important;
+  width: 100%;
+}
+
+footer img {
+  width: 40px;
+  margin: 16px;
+}
+
+main {
+  height: 100%;
+}
+
+.logofooter {
+  width: 60px;
+  margin-right: 16px;
+}
