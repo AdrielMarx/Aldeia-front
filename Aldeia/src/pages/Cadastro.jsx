@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "../styles/Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { cadastrarUsuario, entrarGoogle } from "../firebase/auth";
 import toast from "react-hot-toast";
 import { Nav } from "react-bootstrap";
+import { getAuth } from "firebase/auth";
 
 function Cadastro() {
   const {
@@ -51,6 +52,13 @@ function Cadastro() {
       toast.success("Bem vindo(a)!")
       navigate("/")
     })
+  }
+
+  const auth = getAuth()
+  const user = auth.currentUser
+
+  if (user) {
+    return <Navigate to="/"/>
   }
 
   return (
