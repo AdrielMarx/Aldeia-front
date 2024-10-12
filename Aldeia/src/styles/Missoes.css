@@ -15,6 +15,10 @@
   font-size: 12px;
 }
 
+main {
+  padding-top: 90px;
+}
+
 .botaoVermais:hover {
   background-color: #4E9F3D;
 }

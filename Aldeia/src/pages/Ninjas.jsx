@@ -48,7 +48,7 @@ function Ninjas () {
   
 
   return (
-    <main className="mt-4 container">
+    <main className="container">
       <h1>Seus ninjas</h1>
       <Button as={Link} to="/ninjas/novo">
         Adicionar ninja

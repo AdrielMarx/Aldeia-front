@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import "../styles/Login.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { loginUser, entrarGoogle } from "../firebase/auth";
 import toast from "react-hot-toast";
+import { getAuth } from "firebase/auth";
 
 function Login() {
   const {
@@ -13,6 +14,13 @@ function Login() {
   } = useForm()
 
   const navigate = useNavigate()
+
+  const auth = getAuth()
+  const user = auth.currentUser
+
+  if (user) {
+    return <Navigate to="/"/>
+  }
 
   function entrar(data) {
 
