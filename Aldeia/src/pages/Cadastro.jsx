@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import "../styles/Login.css";
 import { Link, useNavigate, Navigate } from "react-router-dom";
-import { cadastrarUsuario, entrarGoogle } from "../firebase/auth";
+import { cadastrarUsuario, entrarGithub, entrarGoogle } from "../firebase/auth";
 import toast from "react-hot-toast";
 import { Nav } from "react-bootstrap";
 import { getAuth } from "firebase/auth";
@@ -39,7 +39,7 @@ function Cadastro() {
 
     cadastrarUsuario(data.userName, data.email, data.userSenha)
       .then(() => {
-        toast.success(`Bem-vindo(a) ${data.userName}`)
+        toast(`Bem-vindo(a) ${data.userName}`)
         navigate("/")
       })
       .catch((error) => {
@@ -47,11 +47,20 @@ function Cadastro() {
       })
   }
 
-  function handleEntrarGoogle() {
-    entrarGoogle().then(() => {
-      toast.success("Bem vindo(a)!")
+  function handleEntrarGithub () {
+    entrarGithub().then(() => {
+      toast("Bem vindo(a)!")
       navigate("/")
     })
+  }
+
+  function handleEntrarGoogle() {
+    entrarGoogle().then(() => {
+      toast("Bem vindo(a)!")
+      navigate("/")
+    }).catch (
+      toast.error("Já existe uma conta com esse endereço de email!")
+    )
   }
 
   const auth = getAuth()
@@ -65,12 +74,16 @@ function Cadastro() {
     <main className="login-page">
       <aside className="cardInfo">
         <h2>Torne-se um Kage</h2>
+        <p>- Gerencie suas missões</p>
+        <p>- Autonomia total</p>
+        <p>- Ferramentas de personalização</p>
+        <p>- E muito mais!</p>
       </aside>
       <section>
         <div className="form-login">
           <h2>Cadastro</h2>
             <section className="loginRedes">
-              <button className="botaoRedes">github</button>
+              <button className="botaoRedes" onClick={handleEntrarGithub}>github</button>
               <button className="botaoRedes" onClick={handleEntrarGoogle}>google</button>
             </section>
           <form className="form-section" onSubmit={handleSubmit(cadastrar)}>

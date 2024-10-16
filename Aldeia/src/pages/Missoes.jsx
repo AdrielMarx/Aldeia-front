@@ -65,14 +65,10 @@ function Missoes() {
   }
 
   function deletarMissao(id) {
-    const del = confirm("TEM CERTEZA EIN??")
-
-    if (del) {
-      deleteMissao(id).then((resposta) => {
-        toast.success(resposta.message)
-        carregarMissoes()
-      });
-    }
+    deleteMissao(id).then((resposta) => {
+      toast.success(resposta.message)
+      carregarMissoes()
+    })
   }
 
   useEffect(() => {

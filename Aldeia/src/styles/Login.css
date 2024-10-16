@@ -11,8 +11,9 @@
   padding: 30px 200px;
 }
 
-.carInfo {
-  width: 300px;
+.cardInfo {
+  width: 350px;
+  padding: 32px;
 }
 
 .form-section {

@@ -50,7 +50,7 @@ function EditarNinja() {
     if (user) {
       updateNinja(id, data)
         .then((res) => {
-          toast.success(res.message)
+          toast(res.message)
           navigate("/ninjas")
         })
         .catch((err) => {

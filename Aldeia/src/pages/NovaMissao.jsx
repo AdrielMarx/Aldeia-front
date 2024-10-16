@@ -40,7 +40,7 @@ function NovaMissao() {
 
       addMissao(data, uid)
         .then((res) => {
-          toast.success(res.message);
+          toast(res.message);
           navigate("/missoes");
         })
         .catch((err) => {

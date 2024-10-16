@@ -59,7 +59,7 @@ function EditarMissao() {
     if (user) {
       updateMissao(id, data)
         .then((res) => {
-          toast.success(res.message)
+          toast(res.message)
           navigate("/missoes")
         })
         .catch((err) => {

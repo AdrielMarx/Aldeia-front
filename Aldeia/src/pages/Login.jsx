@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import "../styles/Login.css";
 import { useNavigate, Link, Navigate } from "react-router-dom";
-import { loginUser, entrarGoogle } from "../firebase/auth";
+import { loginUser, entrarGoogle, entrarGithub } from "../firebase/auth";
 import toast from "react-hot-toast";
 import { getAuth } from "firebase/auth";
 
@@ -26,7 +26,7 @@ function Login() {
 
     loginUser(data.email, data.userSenha)
       .then(() => {
-        toast.success(`Bem-vindo(a) de volta!`)
+        toast(`Bem-vindo(a) de volta!`)
         navigate("/")
       })
       .catch((error) => {
@@ -36,7 +36,14 @@ function Login() {
 
   function handleEntrarGoogle() {
     entrarGoogle().then(() => {
-      toast.success("Bem vindo(a) de volta!")
+      toast("Bem vindo(a) de volta!")
+      navigate("/")
+    })
+  }
+
+  function handleEntrarGithub() {
+    entrarGithub().then(() => {
+      toast("Bem vindo(a) de volta!")
       navigate("/")
     })
   }
@@ -44,13 +51,17 @@ function Login() {
   return (
     <main className="login-page">
       <aside className="cardInfo">
-        <h2>Torne-se um Kage</h2>
+        <h2>Torne-se um Kage:</h2>
+        <p>- Gerencie suas missões</p>
+        <p>- Autonomia total</p>
+        <p>- Ferramentas de personalização</p>
+        <p>- E muito mais!</p>
       </aside>
-      <section>
+      <section className="login-card">
         <div className="form-login">
           <h2>Login</h2>
             <section className="loginRedes">
-              <button className="botaoRedes">github</button>
+              <button className="botaoRedes" onClick={handleEntrarGithub}>github</button>
               <button className="botaoRedes" onClick={handleEntrarGoogle}>google</button>
             </section>
           <form className="form-section" onSubmit={handleSubmit(entrar)}>
