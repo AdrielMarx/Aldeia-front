@@ -88,7 +88,7 @@ function Missoes() {
       </Button>
       <hr />
       {missoes? (
-        <Table>
+        <Table className="tabelaMissoes">
           <thead>
             <tr>
               <th>Título</th>

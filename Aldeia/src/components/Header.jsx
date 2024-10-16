@@ -35,14 +35,14 @@ function Header() {
                 </Nav.Link>
               </Nav>
               {user && (
-                <Nav className="navigate-links">
+                <Nav className="navigate-links" id="links-logado">
                   <Nav.Link as={Link} to="/ninjas" className="nav-link">
                     Ninjas
                   </Nav.Link>
                   <Nav.Link as={Link} to="/missoes" className="nav-link">
                     Missões
                   </Nav.Link>
-                  <p className="nav-link m-0">Olá, {user.displayName}!</p>
+                  <p className="nav-link m-0" id="nomeUsuario">Olá, {user.displayName}!</p>
                   <button onClick={handleLogout} className="nav-link">
                     Sair
                   </button>

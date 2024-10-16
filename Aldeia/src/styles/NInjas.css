@@ -13,3 +13,9 @@
   flex-direction: column;
   gap: 16px;
 }
+
+@media (max-width: 767px) {
+  .tabelaNinjas {
+    font-size: 15px;
+  }
+}

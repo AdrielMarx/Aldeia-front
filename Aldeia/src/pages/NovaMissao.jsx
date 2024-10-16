@@ -3,7 +3,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { addMissao } from "../api/missoes";
 import { getNinjas } from "../api/ninjas";
 import toast from "react-hot-toast";
-import "../styles/Ninjas.css";
+import "../styles/NovoNinja.css";
 import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { getAuth } from "firebase/auth";
