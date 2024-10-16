@@ -63,7 +63,7 @@ function Ninjas () {
         <tbody>
           {ninjas.map((ninja) => {
             return (
-              <tr key={ninja.id} >
+              <tr key={ninja.id} className="tabelaNinjas">
                   <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
                 <td>{ninja.nome}</td>
                 <td>{ninja.rank}</td>

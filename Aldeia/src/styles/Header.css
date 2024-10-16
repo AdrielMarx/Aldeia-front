@@ -26,3 +26,22 @@ header {
   color: #ffffff !important;
   text-decoration: none !important;
 }
+
+@media (max-width: 767px) {
+  .nav-link {
+    font-size: 22px !important;
+  }
+
+  #links-logado {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .logo {
+    width: 50px !important;
+  }
+
+  #nomeUsuario {
+    display: none;
+  }
+}

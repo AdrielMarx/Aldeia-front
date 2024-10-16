@@ -39,3 +39,9 @@ main {
   flex-direction: column;
   gap: 16px;
 }
+
+@media (max-width: 767px) {
+  .tabelaMissoes {
+    font-size: 15px;
+  }
+}
