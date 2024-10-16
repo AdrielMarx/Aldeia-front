@@ -35,14 +35,10 @@ function Ninjas () {
   }
 
   function deletarNinja(id) {
-    const del = confirm("TEm CERTEZA ABSOLUTA??????????????????????????")
-
-    if (del) {
-      deleteNinja(id).then((resposta) => {
-        toast.success(resposta.message)
-        carregarNinjas()
-      })
-    }
+    deleteNinja(id).then((resposta) => {
+      toast.success(resposta.message)
+      carregarNinjas()
+    })
   }
 
   

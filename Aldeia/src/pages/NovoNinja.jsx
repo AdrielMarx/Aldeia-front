@@ -34,7 +34,7 @@ function NovoNinja() {
 
       addNinja(data, uid)
         .then((res) => {
-          toast.success(res.message);
+          toast(res.message);
           navigate("/ninjas");
         })
         .catch((err) => {

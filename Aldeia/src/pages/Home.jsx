@@ -11,9 +11,9 @@ function Home() {
       </div>
       <section className="texto-descritivo">
         <h2 className="homeDescricao">
-          Criada para facilitar a vida dos shinobis, a plataforma permite que
+          Criada para facilitar a vida dos kages, o KageHub permite que
           você crie, organize e acompanhe suas missões de forma prática e
-          intuitiva
+          intuitiva.
         </h2>
       </section>
 

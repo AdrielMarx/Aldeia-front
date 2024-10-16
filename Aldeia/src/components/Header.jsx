@@ -5,17 +5,17 @@ import "../styles/Header.css";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { logout } from "../firebase/auth";
+import toast from "react-hot-toast";
 
 function Header() {
-  const user = useContext(UserContext);
-  const navigate = useNavigate();
+  const user = useContext(UserContext)
+  const navigate = useNavigate()
 
   function handleLogout() {
-    const confirmacao = confirm("Deseja sair?");
-    if (confirmacao)
-      logout().then(() => {
-        navigate("/login");
-      });
+    logout().then(() => {
+      toast("Saiu")
+      navigate("/login")
+    })
   }
 
   return (
