@@ -74,7 +74,7 @@ function Ninjas () {
                   <Button variant='danger' size='sm' onClick={() => deletarNinja(ninja.id)}>
                     Excluir
                   </Button>
-                  <Button size='sm' as={Link} to={`/ninja/editar/${ninja.id}`}>Editar</Button>
+                  <Button variant="dark" size='sm' as={Link} to={`/ninja/editar/${ninja.id}`}>Editar</Button>
                 </td>
               </tr>
             )

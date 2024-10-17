@@ -121,6 +121,7 @@ function Missoes() {
                     Excluir
                   </Button>
                   <Button
+                    variant="dark"
                     size="sm"
                     as={Link}
                     to={`/missoes/editar/${missao.id}`}
