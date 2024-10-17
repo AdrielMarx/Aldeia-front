@@ -83,7 +83,7 @@ function Missoes() {
   return (
     <main className="container">
       <h1>Suas Missões</h1>
-      <Button as={Link} to="/missoes/novo">
+      <Button variant="dark" as={Link} to="/missoes/novo">
         Adicionar missão
       </Button>
       <hr />

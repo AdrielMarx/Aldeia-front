@@ -46,7 +46,7 @@ function Ninjas () {
   return (
     <main className="container">
       <h1>Seus ninjas</h1>
-      <Button as={Link} to="/ninjas/novo">
+      <Button variant="dark" as={Link} to="/ninjas/novo">
         Adicionar ninja
       </Button>
       <hr />
