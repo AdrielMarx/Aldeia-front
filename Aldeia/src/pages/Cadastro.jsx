@@ -79,9 +79,9 @@ function Cadastro() {
         <p>- Ferramentas de personalização</p>
         <p>- E muito mais!</p>
       </aside>
-      <section>
+      <section className="login-card">
         <div className="form-login">
-          <h2>Cadastro</h2>
+          <h2>Bem vindo(a) de volta!</h2>
             <section className="loginRedes">
               <button className="botaoRedes" onClick={handleEntrarGithub}>github</button>
               <button className="botaoRedes" onClick={handleEntrarGoogle}>google</button>

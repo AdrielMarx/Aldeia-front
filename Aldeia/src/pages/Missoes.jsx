@@ -83,11 +83,11 @@ function Missoes() {
   return (
     <main className="container">
       <h1>Suas Missões</h1>
-      <Button as={Link} to="/missoes/novo">
+      <Button variant="dark" as={Link} to="/missoes/novo">
         Adicionar missão
       </Button>
       <hr />
-      {missoes? (
+      {missoes? <div className="table-responsive">
         <Table className="tabelaMissoes">
           <thead>
             <tr>
@@ -121,6 +121,7 @@ function Missoes() {
                     Excluir
                   </Button>
                   <Button
+                    variant="dark"
                     size="sm"
                     as={Link}
                     to={`/missoes/editar/${missao.id}`}
@@ -132,7 +133,9 @@ function Missoes() {
             ))}
           </tbody>
         </Table>
-      ) : (
+      </div>
+        
+      : (
         <p>carregando...</p>
       )}
     </main>

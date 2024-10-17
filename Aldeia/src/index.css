@@ -26,3 +26,9 @@ main {
   flex: 1;
   margin-top: 130px;
 }
+
+@media (max-width: 767px) {
+  * {
+    font-size: 20px;
+  }
+}

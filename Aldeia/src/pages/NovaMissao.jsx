@@ -80,7 +80,7 @@ function NovaMissao() {
 
   return (
     <main>
-      <h1>Nova missão</h1>
+      <h1  className="titleNovo">Nova missão</h1>
       <hr />
       <div className="crudNinja">
         <form onSubmit={handleSubmit(salvarMissao)} className="formNinja">

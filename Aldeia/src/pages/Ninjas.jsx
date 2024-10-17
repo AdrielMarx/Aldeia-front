@@ -46,11 +46,12 @@ function Ninjas () {
   return (
     <main className="container">
       <h1>Seus ninjas</h1>
-      <Button as={Link} to="/ninjas/novo">
+      <Button variant="dark" as={Link} to="/ninjas/novo">
         Adicionar ninja
       </Button>
       <hr />
-      {ninjas?  <Table>
+      {ninjas ? <div className="table-responsive">
+        <Table className="tabelaNinjas">
         <thead>
           <tr>
             <th></th>
@@ -63,8 +64,8 @@ function Ninjas () {
         <tbody>
           {ninjas.map((ninja) => {
             return (
-              <tr key={ninja.id} className="tabelaNinjas">
-                  <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
+              <tr key={ninja.id} >
+                <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
                 <td>{ninja.nome}</td>
                 <td>{ninja.rank}</td>
                 <td>{ninja.aldeia}</td>
@@ -73,15 +74,16 @@ function Ninjas () {
                   <Button variant='danger' size='sm' onClick={() => deletarNinja(ninja.id)}>
                     Excluir
                   </Button>
-                  <Button size='sm' as={Link} to={`/ninja/editar/${ninja.id}`}>Editar</Button>
+                  <Button variant="dark" size='sm' as={Link} to={`/ninja/editar/${ninja.id}`}>Editar</Button>
                 </td>
               </tr>
             )
           })}
         </tbody>
-      </Table> : <p>carregando...</p>}
+      </Table>
+      </div>  : <p>carregando...</p>}
     </main>
-  );
+  )
 }
 
 export default Ninjas
