@@ -52,7 +52,7 @@ function NovoNinja() {
 
   return (
     <main>
-      <h1>Novo ninja</h1>
+      <h1 className="titleNovo">Novo ninja</h1>
       <hr />
       <div className="crudNinja">
         <form onSubmit={handleSubmit(salvarNinja)} className="formNinja">

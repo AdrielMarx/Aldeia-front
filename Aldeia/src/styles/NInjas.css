@@ -16,6 +16,7 @@
 
 @media (max-width: 767px) {
   .tabelaNinjas {
-    font-size: 15px;
+    font-size: 17px;
+    min-width: 1200px !important;
   }
 }

@@ -10,6 +10,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 8px;
+  font-size: 17px;
 }
 
 .botaoNinja {
@@ -20,4 +22,8 @@
 .botao {
   width: 240px;
   margin: 16px;
+}
+
+.titleNovo {
+  padding-left: 16px;
 }

@@ -50,7 +50,8 @@ function Ninjas () {
         Adicionar ninja
       </Button>
       <hr />
-      {ninjas?  <Table>
+      {ninjas ? <div className="table-responsive">
+        <Table className="tabelaNinjas">
         <thead>
           <tr>
             <th></th>
@@ -63,8 +64,8 @@ function Ninjas () {
         <tbody>
           {ninjas.map((ninja) => {
             return (
-              <tr key={ninja.id} className="tabelaNinjas">
-                  <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
+              <tr key={ninja.id} >
+                <td><img src={ninja.imgURL} alt="Imagem do ninja" className="fotoNinja"/></td>
                 <td>{ninja.nome}</td>
                 <td>{ninja.rank}</td>
                 <td>{ninja.aldeia}</td>
@@ -79,9 +80,10 @@ function Ninjas () {
             )
           })}
         </tbody>
-      </Table> : <p>carregando...</p>}
+      </Table>
+      </div>  : <p>carregando...</p>}
     </main>
-  );
+  )
 }
 
 export default Ninjas

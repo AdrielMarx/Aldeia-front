@@ -58,3 +58,17 @@
   flex-wrap: nowrap;
   width: auto;
 }
+
+@media (max-width: 767px) {
+  .login-page {
+    flex-direction: column;
+    padding: 8px;
+    font-size: 20px;
+  }
+  .login-card {
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+    padding: 8px;
+  }
+}

@@ -87,7 +87,7 @@ function Missoes() {
         Adicionar missão
       </Button>
       <hr />
-      {missoes? (
+      {missoes? <div className="table-responsive">
         <Table className="tabelaMissoes">
           <thead>
             <tr>
@@ -132,7 +132,9 @@ function Missoes() {
             ))}
           </tbody>
         </Table>
-      ) : (
+      </div>
+        
+      : (
         <p>carregando...</p>
       )}
     </main>
